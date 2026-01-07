@@ -50,6 +50,22 @@ pipeline{
                 }
             }
         }
+        stage('Deploy Application (Docker)'){
+            steps{
+                sh '''
+                echo "Stopping old container if exists..."
+                docker stop ml-project || true
+                docker rm ml-project || true
+
+                echo "Running new container..."
+                docker run -d \
+                    --name ml-project \
+                    -p 8081:8080 \
+                    himanshu863/ml-project:latest
+                '''
+            }
+        }
+
 
         
     }

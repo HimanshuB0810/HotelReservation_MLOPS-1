@@ -2,8 +2,11 @@ pipeline{
     agent any
 
     environment {
-        VENV_DIR = 'venv'
-    }
+    VENV_DIR = 'venv'
+    DOCKER_IMAGE = "himanshu863/ml-project:latest"
+    MINIO_ENDPOINT = "http://minio:9000"
+}
+
 
     stages{
         stage('Cloning Github repo to Jenkins'){
@@ -27,6 +30,27 @@ pipeline{
                 }
             }
         }
+        stage('Build and Push Docker Image'){
+            steps{
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]){
+                    sh '''
+                    echo "Building Docker image..."
+                    docker build -t $DOCKER_IMAGE .
+
+                    echo "Logging into Docker Hub..."
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+
+                    echo "Pushing image to Docker Hub..."
+                    docker push $DOCKER_IMAGE
+                    '''
+                }
+            }
+        }
+
         
     }
 }

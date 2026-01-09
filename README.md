@@ -20,8 +20,8 @@ This project implements an end-to-end MLOps pipeline to predict hotel reservatio
 
 ## 🌐 Live Demo
 
-* **Deployment URL**: [https://hotel-reservation-mlops.onrender.com](https://www.google.com/search?q=https://hotel-reservation-mlops.onrender.com)
-* **Platform**: Render (Web Service)
+* **Deployment URL**: https://huggingface.co/spaces/GaramAloo/hotel-reservation-prediction
+* **Platform**: Hugging Face Spaces
 
 ## 🎯 Target Audience
 

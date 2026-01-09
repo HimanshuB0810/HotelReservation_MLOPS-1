@@ -16,6 +16,6 @@ RUN pip install --no-cache-dir -e .
 
 RUN python pipeline/training_pipeline.py
 
-EXPOSE 5000
+EXPOSE 7860
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "application:app"]
+CMD ["python", "application.py"]

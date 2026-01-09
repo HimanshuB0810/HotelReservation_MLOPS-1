@@ -1,3 +1,13 @@
+---
+title: Hotel Reservation Prediction
+emoji: 🏨
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: "4.44.0"
+app_file: application.py
+pinned: false
+---
 # Hotel Reservation Prediction – MLOps Project
 
 This project implements an end-to-end MLOps pipeline to predict hotel reservation cancellations. By identifying high-risk bookings early, hotel management can optimize revenue, reduce last-minute vacancies, and mitigate potential booking-related scams.
